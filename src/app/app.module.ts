@@ -13,10 +13,12 @@ import { TodosComponent } from "./components/todos/todos.component";
 import { AppErrorHandler } from "./errors/app-error-handler";
 import { NotFoundComponent } from "./errors/components/not-found/not-found.component";
 import { NoAccessComponent } from "./errors/components/no-access/no-access.component";
+import { HomeComponent } from "./components/home/home.component";
 
 const routes: Routes = [
     { path : "" , component: AppComponent },
 
+    { path : "home" , component: HomeComponent },
     { path : "zippy" , component: ZippyComponent },
     { path : "todo" , component: TodosComponent },
     { path : "no-access" , component: NoAccessComponent },
@@ -29,14 +31,14 @@ const routes: Routes = [
         NoAccessComponent,
         NotFoundComponent,
         TodosComponent,
-        ZippyComponent
+        ZippyComponent,
+        HomeComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         RouterModule.forRoot(routes),
-        BrowserAnimationsModule,
         ReactiveFormsModule,
     ],
     exports: [

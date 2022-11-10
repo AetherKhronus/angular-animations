@@ -23,6 +23,7 @@
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "typescript-eslint": "^0.0.1-alpha.0",
+    "web-animations-js": "^2.3.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

@@ -1,47 +1,188 @@
-import { trigger, transition, state, animate, animation, style, keyframes, useAnimation } from '@angular/animations';
+import { trigger , transition , state , animate , style , keyframes , animation , useAnimation} from "@angular/animations";
 
-export let bounceOutLeftAnimation = animation(
-  animate('0.5s ease-out', keyframes([
-    style({ 
-      offset: .2, 
-      opacity: 1,
-      transform: 'translateX(20px)' 
-    }),
-    style({ 
-      offset: 1, 
-      opacity: 0,
-      transform: 'translateX(-100%)' 
-    }),
-])));
+export const bounceOutLeftAnimation = animation([
 
-export let slide = trigger('slide', [
-  transition(':enter', [
-    style({ transform: 'translateX(-10px)' }),
-    animate(500)
-  ]),
+    animate("{{ duration }} {{ delay }} {{ easing }}" , keyframes([
 
-  transition(':leave', 
-    useAnimation(bounceOutLeftAnimation)
-  )
-]);
+        style({
+            offset: 0,
+            transform: "translateX(0)"
+        }),
 
-export let fadeInAnimation = animation([
-  style({ opacity: 0 }),
-  animate('{{ duration }} {{ easing }}')
-], {
-  params: {
-    duration: '2s',
-    easing: 'ease-out'
-  }
+        style({ 
+            offset: .2,
+            transform: "translateX(20px)"
+        }),
+
+        style({ 
+            offset: 1,
+            transform: "translateX(-100%)"
+        })
+
+    ]))
+
+], 
+{
+    params: {
+        duration: "1000ms",
+        delay: "0ms",
+        easing: "ease-in"
+    }
 });
 
-export let fade = trigger('fade', [
+export const bounceInRightAnimation = animation([
 
-  transition(':enter', 
-    useAnimation(fadeInAnimation)
-  ),
+    animate("{{ duration }} {{ delay }} {{ easing }}" , keyframes([
 
-  transition(':leave', [ 
-    animate(2000, style({ opacity: 0 }))
-  ])
+        style({ 
+            offset: 0,
+            transform: "translateX(-100%)"
+        }),
+
+        style({
+            offset: .8,
+            transform: "translateX(20px)"
+        }),
+
+        style({
+            offset: 1,
+            transform: "translateX(0)"
+        })
+
+    ]))
+
+], 
+{
+    params: {
+        duration: "1000ms",
+        delay: "0ms",
+        easing: "ease-out"
+    }
+});
+
+export const fadeInAnimation = animation([
+
+    style({ opacity: 0 }),
+    animate("{{ duration }} {{ delay }} {{ easing }}")
+
+], 
+{
+    params: {
+        duration: "1000ms",
+        delay: "0ms",
+        easing: "ease-out"
+    }
+});
+
+export const fadeOutAnimation = animation([
+
+    animate("{{ duration }} {{ delay }} {{ easing }}" , style({ opacity: 0 }))
+
+], 
+{
+    params: {
+        duration: "1000ms",
+        delay: "0ms",
+        easing: "ease-in"
+    }
+});
+
+export const flashRedAnimation = animation([
+
+    style({ backgroundColor: "red" }),
+    animate("{{ duration }} {{ delay }} {{ easing }}")
+
+], 
+{
+    params: {
+        duration: "1000ms",
+        delay: "0ms",
+        easing: "ease"
+    }
+});
+
+export const slideInTopAnimation = animation([
+
+    animate("{{ duration }} {{ delay }} {{ easing }}" , keyframes([
+
+        style({
+            offset: 0,
+            transform: "translateY(-100%)"
+        }),
+
+        style({ 
+            offset: 1,
+            transform: "translateY(0)"
+        })
+
+    ]))
+
+], 
+{
+    params: {
+        duration: "1000ms",
+        delay: "0ms",
+        easing: "ease-out"
+    }
+});
+
+export const slideOutTopAnimation = animation([
+
+    animate("{{ duration }} {{ delay }} {{ easing }}" , keyframes([
+
+        style({
+            offset: 0,
+            transform: "translateX(0)"
+        }),
+
+        style({ 
+            offset: 1,
+            transform: "translateX(-100%)"
+        })
+
+    ]))
+
+], 
+{
+    params: {
+        duration: "1000ms",
+        delay: "0ms",
+        easing: "ease-in"
+    }
+});
+
+export const fade = trigger("fade" , [
+
+    transition("void => *" , [
+
+        useAnimation(fadeInAnimation)
+
+    ]),
+
+    transition("* => void" , [
+
+        useAnimation(fadeOutAnimation)
+
+    ]),
+
 ]);
+
+export const slide = trigger("slide" , [
+
+    state("void" , style({ transform: "translateX(-100%)" })),
+
+    transition("* => void" , [
+
+        useAnimation(bounceOutLeftAnimation)
+        
+    ]),
+
+    transition("void => *" , [
+
+        useAnimation(bounceInRightAnimation)
+        
+    ])
+
+]);
+
+

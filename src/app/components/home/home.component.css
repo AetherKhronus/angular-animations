@@ -1,0 +1,24 @@
+ul { 
+	padding: 5px; 
+	list-style-type: none; 
+	text-align: center; 
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul li {
+    margin: 10px;
+}
+
+label {
+    font-size: 20px;
+    margin-right: 5px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+input {
+    height: 35px;
+    font-size: 20px;
+}

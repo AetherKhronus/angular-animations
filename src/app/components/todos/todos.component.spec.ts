@@ -1,25 +1,30 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TodosComponent } from './todos.component';
+import { TodosComponent } from "./todos.component";
 
-describe('TodosComponent', () => {
-  let component: TodosComponent;
-  let fixture: ComponentFixture<TodosComponent>;
+describe("TodosComponent", () => {
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TodosComponent ]
-    })
-    .compileComponents();
-  }));
+    let component: TodosComponent;
+    let fixture: ComponentFixture<TodosComponent>;
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TodosComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(async () => {
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
+        await TestBed.configureTestingModule({
+
+            declarations: [ TodosComponent ]
+            
+        }).compileComponents();
+
+        fixture = TestBed.createComponent(TodosComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+
+    });
+
+    it("should be created", () => {
+
+        expect(component).toBeTruthy();
+
+    });
+
 });

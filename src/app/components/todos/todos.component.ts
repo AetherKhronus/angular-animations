@@ -1,44 +1,17 @@
-import { trigger , transition , state , animate , style , keyframes , useAnimation , query , animateChild , group , stagger } from "@angular/animations";
-import { fade , slide , bounceOutLeftAnimation , fadeInAnimation } from "../../animations";
 import { Component } from "@angular/core";
+import { AnimationEvent } from "@angular/animations";
+import { title , todos } from "./todos.component.animation";
 
 @Component({
     selector: "todos",
     templateUrl: "./todos.component.html",
     styleUrls: ["./todos.component.css"],
-    animations: [
-        trigger("todosAnimation", [
-            transition(":enter", [
-                group([
-                    query("h1", [
-                        style({ transform: "translateY(-20px)" }),
-                        animate(1000)
-                    ]),
-                    query("@todoAnimation", 
-                        stagger(200, animateChild()))
-                ])
-            ])
-        ]),
-
-        trigger("todoAnimation", [
-            transition(":enter", [
-                useAnimation(fadeInAnimation, {
-                    params: {
-                        duration: "2s"
-                    }
-                })
-            ]),
-            transition(":leave", [
-                style({ backgroundColor: "#ef5350" }),
-                animate(500),
-                useAnimation(bounceOutLeftAnimation)
-            ]),
-        ])
-    ]
+    animations: [ title , todos ]
 })
 
 export class TodosComponent {
-    items: any[] = [
+
+    items: string[] = [
         "Wash the dishes", 
         "Call the accountant", 
         "Apply for a car insurance"];
@@ -50,20 +23,20 @@ export class TodosComponent {
 
     }
 
-    removeItem(item: any) {
+    removeItem(item: string): void {
 
         const index = this.items.indexOf(item);
         this.items.splice(index , 1);
 
     }
 
-    animationStarted($event: any) { 
+    animationStarted($event: AnimationEvent): void { 
 
         console.log($event); 
 
     }
 
-    animationDone($event: any) { 
+    animationDone($event: AnimationEvent): void { 
 
         console.log($event); 
 

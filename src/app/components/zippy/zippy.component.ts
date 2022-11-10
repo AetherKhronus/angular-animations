@@ -1,5 +1,5 @@
-import { expandCollapse } from "./zippy.component.animations";
 import { Component, Input } from "@angular/core";
+import { expandCollapse } from "./zippy.component.animations";
 
 @Component({
     selector: "zippy",
