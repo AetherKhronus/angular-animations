@@ -1,0 +1,33 @@
+<div class = "zippy">
+
+    <div class = "zippy-heading" [class.expanded] = "isExpanded" (click) = "toggle()">
+
+        {{ title }}
+
+        <svg *ngIf = "isExpanded" xmlns = "http://www.w3.org/2000/svg" width = "1em" height = "1em" fill = "currentColor" class = "bi bi-chevron-compact-up" viewBox = "0 0 16 16">
+            <path fill-rule = "evenodd" d = "M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
+        </svg>
+        <svg *ngIf = "!isExpanded" xmlns = "http://www.w3.org/2000/svg" width = "1em" height = "1em" fill = "currentColor" class = "bi bi-chevron-compact-down" viewBox = "0 0 16 16">
+            <path fill-rule = "evenodd" d = "M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+        </svg>
+
+    </div>
+
+    <div [@expandCollapse] = "isExpanded ? 'expanded' : 'collapsed'" class = "zippy-body">
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit semper suscipit. 
+            Etiam vulputate leo orci, a maximus libero commodo eget. Aliquam convallis interdum turpis. 
+            Maecenas sagittis at ante at cursus. Pellentesque purus risus, viverra in justo efficitur, 
+            rutrum tempus odio. Suspendisse euismod congue varius. Integer quis dolor sit amet nisl pulvinar ultricies.
+        </p>
+        <p>
+            Maecenas quam purus, pretium vel fringilla non, porta a risus. 
+            Aenean ornare ex erat, a posuere nulla auctor et. Pellentesque imperdiet augue nec sem dictum vulputate.
+            Morbi sodales, dui et maximus interdum, lectus mi pellentesque nisi, eget mattis est est quis augue. Ut id venenatis mauris.
+            Quisque nec dignissim nisi, vitae semper nulla. Fusce laoreet diam neque, vitae consectetur enim imperdiet et.
+        </p>
+
+    </div>
+    
+</div>
